@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/18280405287/testReach/issues"
   },
-  "homepage": "https://github.com/18280405287/testReach#readme"
+  "homepage": "https://github.com/18280405287/testReach#readme",
+  "devDependencies": {
+    "webpack": "^4.43.0"
+  }
 }
