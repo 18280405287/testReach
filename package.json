@@ -1,0 +1,20 @@
+{
+  "name": "testReach",
+  "version": "1.0.0",
+  "description": "用来写React的代码",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/18280405287/testReach.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/18280405287/testReach/issues"
+  },
+  "homepage": "https://github.com/18280405287/testReach#readme"
+}
