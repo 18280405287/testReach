@@ -9,6 +9,7 @@ const htmlPlugin = new HtmlWebpackPlugin({
 });
 
 //向外暴露一个打包配置对象;  因为 webpack是基于Node构建的,所以webpack支持所有 Node API 和语法
+//webpack 默认只能处理 .js 后缀名类型的文件;像.png .vue webpack无法主动处理
 module.exports = {
     mode: 'development',//development开发环境 production产品环境(会压缩代码,减少配置文件的体积)
     //在 webpack 4.x 中 ,有一个很大的特性,就是约定大于配置; 约定.默认打包入口路径是src -> index.js
@@ -16,7 +17,18 @@ module.exports = {
     //插件
     plugins: [
         htmlPlugin
-    ]
+    ],
+    module: {//所有 第三方模块 的配置规则
+        rules: [ // 第三方匹配规则
+            { test: /\.(js|jsx)$/, use: 'babel-loader', exclude: /node_modules/ }, // 千万别忘记添加 exclude 排除项
+        ]
+    },
+    resolve:{
+        extensions:['.js','.jsx','.json'],//表示这几个后缀名 可以省略不写,顺序很重要 翻译: extension 拓展 扩展
+        alias:{//这是别名
+            '@':path.join(__dirname,'./src')//这样 @符号 就表示 项目根目录中src这一层路路径
+        }
+    }
 };
 
 
