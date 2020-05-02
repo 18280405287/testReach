@@ -18,15 +18,33 @@ module.exports = {
     plugins: [
         htmlPlugin
     ],
-    module: {//所有 第三方模块 的配置规则
+    //所有 第三方模块 的配置规则
+    module: {
         rules: [ // 第三方匹配规则
-            { test: /\.(js|jsx)$/, use: 'babel-loader', exclude: /node_modules/ }, // 千万别忘记添加 exclude 排除项
+            {test: /\.(js|jsx)$/, use: 'babel-loader', exclude: /node_modules/}, // 千万别忘记添加 exclude 排除项
+            //可以在 css-loader 后面 用 ? 追加参数
+            //其中,有个固定的参数叫做modules,表示为普通css样式表,启用模块化
+            {test:/\.css$/,use:['style-loader','css-loader']},
+            {test: /\.ttf|woff|eot|svg$/, use: 'url-loader'},//打包处理字体文件的loader
+            {
+                test: /\.scss$/,
+                use: [{loader:'style-loader'},
+                    {loader:'css-loader',
+                        options:{
+                            modules:{
+                                localIdentName:'[path][name]__[local]__[hash:6]'
+                            }
+                        }},
+                    {loader:'sass-loader'}
+                ]
+
+            }
         ]
     },
-    resolve:{
-        extensions:['.js','.jsx','.json'],//表示这几个后缀名 可以省略不写,顺序很重要 翻译: extension 拓展 扩展
-        alias:{//这是别名
-            '@':path.join(__dirname,'./src')//这样 @符号 就表示 项目根目录中src这一层路路径
+    resolve: {
+        extensions: ['.js', '.jsx', '.json'],//表示这几个后缀名 可以省略不写,顺序很重要 翻译: extension 拓展 扩展
+        alias: {//这是别名
+            '@': path.join(__dirname, './src')//这样 @符号 就表示 项目根目录中src这一层路路径
         }
     }
 };

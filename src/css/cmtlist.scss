@@ -1,0 +1,14 @@
+/*css样式表 模块化后,只针对 类样式 和 id选择器样式生效*/
+/*对标签 无效*/
+/*:local(.title){}     默认不写local*/
+.title {
+    color: red;
+    text-align: center;
+    font-weight: 200;
+
+}
+
+/*注意: 被 :global()  包裹的 类 不会被模块化*/
+:global(.test){
+    font-style: italic;
+}

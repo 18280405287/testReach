@@ -1,0 +1,16 @@
+/*css样式表 模块化后,只针对 类样式 和 id选择器样式生效*/
+/*对标签 无效*/
+.title {
+    font-size: 14px;
+
+}
+.content{
+    font-size: 12px;
+}
+
+.cmtbox{
+    border: 1px dashed #ccc;
+    margin: 10px;
+    padding: 10px;
+    box-shadow: 0 0 10px #ccc;
+}
